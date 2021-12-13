@@ -1,0 +1,19 @@
+version: '3'
+
+services: 
+  app-nodejs:
+    build: 
+      context: node
+    image: nilsonrsvieira/app-nodejs:0.1
+    command: npm start
+    container_name: app-nodejs
+    networks: 
+      - nginx-nodejs
+    volumes: 
+      - ./node:/usr/src/app
+    tty: true
+    ports: 
+      - "3000:3000"
+networks: 
+  nginx-nodejs:
+    driver: bridge      
