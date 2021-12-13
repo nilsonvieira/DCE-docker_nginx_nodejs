@@ -16,9 +16,7 @@ services:
       - nginx-nodejs
 
   app-nodejs:
-    build: 
-      context: node
-    image: nilsonrsvieira/ce-app-nodejs:0.1
+    image: nilsonrsvieira/ce-app-nodejs:0.2
     command: npm start
     container_name: ce-app-nodejs
     networks: 
@@ -31,8 +29,6 @@ services:
 
   nginx:
     restart: always
-    build:
-        context: nginx
     image: nilsonrsvieira/ce-nginx:0.1
     container_name: ce-nginx
     ports:
