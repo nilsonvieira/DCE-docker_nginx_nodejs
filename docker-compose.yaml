@@ -19,7 +19,6 @@ services:
     build: 
       context: node
     image: nilsonrsvieira/ce-app-nodejs:0.1
-    # entrypoint: dockerize -wait tcp://ce-mysql:3306 -timeout 20s docker-entrypoint.sh
     command: npm start
     container_name: ce-app-nodejs
     networks: 
