@@ -21,8 +21,6 @@ services:
     container_name: ce-app-nodejs
     networks: 
       - nginx-nodejs
-    volumes: 
-      - ./node:/usr/src/app
     tty: true
     depends_on: 
        - ce-mysql
