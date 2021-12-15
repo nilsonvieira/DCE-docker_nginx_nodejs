@@ -1,22 +1,31 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-var mysql = require("mysql");
-
-var con = mysql.createConnection({
+const config = {
   host: "ce-mysql",
   user: "root",
   password: "root",
   database: "nodedb",
-});
-const sqltable = "CREATE TABLE  people (name varchar(255))";
-con.query(sqltable);
-const sqlvalues = `INSERT INTO people(name) values('Nilson')`;
-con.query(sqlvalues);
-con.end();
+};
+
+const mysql = require("mysql");
+const con = mysql.createConnection(config);
 
 app.get("/", (req, res) => {
-  res.send("<h1>Full Cycle Rocks</h1>");
+  con.query(`CREATE TABLE  people (name varchar(255))`);
+  con.query(`INSERT INTO people (name) VALUES ('Nilson')`);
+  con.query(`SELECT name FROM people`, (error, results, fields) => {
+    res.send(`
+      <h1>Full Cycle Rocks!</h1>
+      <ol>
+        ${
+          !!results.length
+            ? results.map((el) => `O Nome é: ${el.name}`).join("")
+            : ""
+        }
+      </ol>
+    `);
+  });
 });
 
 app.listen(port, () => {
