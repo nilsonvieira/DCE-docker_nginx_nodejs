@@ -1,6 +1,4 @@
-FROM node:15
-
-USER node
+FROM node:14
 
 WORKDIR /usr/src/app
 
