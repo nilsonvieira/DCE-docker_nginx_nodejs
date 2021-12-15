@@ -16,7 +16,7 @@ services:
       - nginx-nodejs
 
   app-nodejs:
-    image: nilsonrsvieira/ce-app-nodejs:0.2
+    image: nilsonrsvieira/ce-app-nodejs:0.3
     command: npm start
     container_name: ce-app-nodejs
     networks: 
