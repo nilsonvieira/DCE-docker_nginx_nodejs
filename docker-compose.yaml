@@ -16,7 +16,8 @@ services:
       - nginx-nodejs
 
   app-nodejs:
-    image: nilsonrsvieira/ce-app-nodejs:0.3
+    build:
+      context: node
     command: npm start
     container_name: ce-app-nodejs
     networks: 
@@ -26,8 +27,9 @@ services:
        - ce-mysql
 
   nginx:
+    build:
+      context: nginx
     restart: always
-    image: nilsonrsvieira/ce-nginx:0.1
     container_name: ce-nginx
     ports:
         - "8080:80"
